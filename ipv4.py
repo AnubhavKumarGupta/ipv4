@@ -14,7 +14,7 @@ def ip_correct_check(octet):
             return True
 
 
-# IP address of host
+# To find IP address of host
 ip_addr = input("Enter IP address of host: ")
 
 while True:
@@ -36,7 +36,7 @@ while True:
 # IP class
 ip_list_octet = ip_addr.split(".")
 ip_list_octet = [int(i) for i in ip_list_octet]
-class_of_ip = None  # IP class ----------
+class_of_ip = None  # IP class 
 
 
 if int(ip_list_octet[0]) in range(0, 128):
@@ -51,7 +51,7 @@ elif int(ip_list_octet[0]) in range(240, 255):
     class_of_ip = "E"
 
 
-# Public/private
+# To find whether it is Public/private
 type_of_ip = None
 if (
     (int(ip_list_octet[0]) == 10)
@@ -74,7 +74,7 @@ for i in range(0, len(mask_bin), 8):
 mask_dec_list = [int(("0b" + i), 2) for i in mask_bin_list]
 
 
-# IP Addr bin
+# IP Address bin
 def ip_in_bin(octet):
     m = str(bin(octet))
     m1 = [i for i in m]
@@ -86,7 +86,7 @@ def ip_in_bin(octet):
     return m2
 
 
-bin_ip_list = []  # IP Addr bin----------------
+bin_ip_list = []  # IP Address in bin
 for i in range(len(ip_list_octet)):
     bin_ip_list.insert(i, ip_in_bin(int(ip_list_octet[i])))
     bin_ip_list[i] = bin_ip_list[i][0]
@@ -178,8 +178,7 @@ available_number_prom = 32 - ip_prefix
 available_number = 2**available_number_prom
 
 
-# Output---------------------------------------------------------
-# -------------------------------------------------------------
+# Output-------------------------------------------------------------
 print("IP address: {}/{}".format(ip_addr, ip_prefix))
 print("Class of IP address: {}".format(class_of_ip))
 print("Address category: {}".format(type_of_ip))
