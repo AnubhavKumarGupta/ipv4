@@ -4,13 +4,13 @@
 **You can compute these several tasks using this Python snippet.**
 viz..
 
-To determine the class of IP address
+To determine the classes of IP address.
 
-To determine whether it is a public IP or private
+To determine whether it is a public IP or private IP.
 
-IP address to determine the host
+To determine the IP address of the host.
 
-To determine the mask
+To determine the mask.
 
 To determine the network addresses.
 
