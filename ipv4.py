@@ -178,7 +178,7 @@ available_number_prom = 32 - ip_prefix
 available_number = 2**available_number_prom
 
 
-# Output-------------------------------------------------------------
+# Output of all Functions ------------------------------------------------
 print("IP address: {}/{}".format(ip_addr, ip_prefix))
 print("Class of IP address: {}".format(class_of_ip))
 print("Address category: {}".format(type_of_ip))
