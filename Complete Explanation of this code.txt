@@ -1,0 +1,38 @@
+This programme is used to analyse and manipulate IP addresses and the information connected with them. The code is explained in detail below:
+
+1. The code defines the following two functions:
+   - 'pr(name, mask)': Concatenates the strings 'name' and'mask'.
+   - 'ip_correct_check(octet)': Determines whether or not the IP address represented by 'octet' is properly formed.
+
+2. The user is asked to input their IP address. A while loop ensures that the IP address input is correct.
+
+3. The user is asked to enter an IP address. Another while loop verifies that the prefix value input is correct.
+
+4. The code identifies the IP address classes based on the first byte value.
+
+5. Based on certain parameters, it determines whether the IP address is public or private.
+
+6. The prefix is then translated to binary format.
+
+7. The function 'ip_in_bin(octet)' is defined in the source code for converting each octet of the IP address to binary format.
+
+8. The IP address is converted to binary format and saved in the 'bin_ip_list' variable.
+
+9. A bitwise AND operation between the IP address and the binary mask is used to calculate the network address.
+
+10. The network address is translated to binary representation and saved in the'subnet_bin_list' variable.
+
+11. The broadcast address is determined by combining the mask with the IP address.
+
+12. The broadcast address is converted to binary representation and saved in the 'broadcast_bin' variable.
+
+13. The first and last available host addresses are determined based on the prefix.
+
+14. The first and last available host addresses are converted to binary format and stored in `first_bin_list` and `last_bin_list`, respectively.
+
+15. The total number of addresses and usable hosts in the network are calculated based on the prefix.
+
+16. Finally, the code outputs all the gathered information, including the IP address, IP class, address category (public/private), decimal and binary representations of various addresses, and the number of hosts.
+
+
+Overall, this code allows for the analysis and manipulation of IP addresses, including determining their class, network information, and available hosts.
