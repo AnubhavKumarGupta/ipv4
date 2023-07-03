@@ -1,6 +1,9 @@
+# Function to concatenate the name and mask
+
 def pr(name, mask):
     return name + mask
 
+# Function to check if the IP address is correctly formatted
 
 def ip_correct_check(octet):
     check = octet.split(".")
@@ -15,7 +18,10 @@ def ip_correct_check(octet):
 
 
 # To find IP address of host
+
 ip_addr = input("Enter IP address of host: ")
+
+# Loop until a correct IP address is entered
 
 while True:
     if ip_correct_check(ip_addr):
@@ -24,7 +30,10 @@ while True:
         ip_addr = input("Enter correct IP address of host: ")
 
 # Mask --- prefix
+
 ip_prefix = int(input("Enter IP prefix: "))
+
+# Loop until a valid prefix value is entered
 
 while True:
     if 0 <= ip_prefix <= 31:
@@ -34,10 +43,12 @@ while True:
 
 
 # IP class
+
 ip_list_octet = ip_addr.split(".")
 ip_list_octet = [int(i) for i in ip_list_octet]
 class_of_ip = None  # IP class 
 
+# Determine the IP class based on the first octet of the IP address
 
 if int(ip_list_octet[0]) in range(0, 128):
     class_of_ip = "A"
@@ -62,8 +73,8 @@ if (
 else:
     type_of_ip = "Public"
 
+# Convert the prefix to binary format
 
-# Mask bin/dec
 mask_bin = int(ip_prefix) * "1" + (32 - int(ip_prefix)) * "0"
 
 mask_bin_list = []
@@ -74,7 +85,8 @@ for i in range(0, len(mask_bin), 8):
 mask_dec_list = [int(("0b" + i), 2) for i in mask_bin_list]
 
 
-# IP Address bin
+# Function to convert an octet to binary format
+
 def ip_in_bin(octet):
     m = str(bin(octet))
     m1 = [i for i in m]
@@ -85,14 +97,15 @@ def ip_in_bin(octet):
     m2 = ["".join(m1)]
     return m2
 
+# Convert each octet of the IP address to binary format
 
 bin_ip_list = []  # IP Address in bin
 for i in range(len(ip_list_octet)):
     bin_ip_list.insert(i, ip_in_bin(int(ip_list_octet[i])))
     bin_ip_list[i] = bin_ip_list[i][0]
 
+# Calculate the network address in decimal format
 
-# Subnet add dec
 subnet_decimal_list = []
 for i in range(4):
     subnet_decimal_list.append(
@@ -100,13 +113,15 @@ for i in range(4):
     )
 
 
-# Subnet add bin
+# Convert the network address to binary format
+
 subnet_bin_list = []
 for i in range(len(ip_list_octet)):
     subnet_bin_list.insert(i, ip_in_bin(int(subnet_decimal_list[i])))
     subnet_bin_list[i] = subnet_bin_list[i][0]
 
-# Broadcast dec
+# Calculate the broadcast address in decimal format
+
 broadcast_dec = []
 for i in range(4):
     if mask_dec_list[i] == 255:
@@ -121,13 +136,15 @@ for i in range(4):
         prom_broadcast_final -= 1
         broadcast_dec.append(prom_broadcast_final)
 
-# Broadcast bin
+# Convert the broadcast address to binary format
+
 broadcast_bin = []
 for i in range(4):
     broadcast_bin.insert(i, ip_in_bin(int(broadcast_dec[i])))
     broadcast_bin[i] = broadcast_bin[i][0]
 
-# First/Last available host dec
+# Calculate the first/last available host address in decimal format
+
 if 1 <= int(ip_prefix) <= 30:
     first_av_host = subnet_decimal_list[:3] + [subnet_decimal_list[3] + 1]
 else:
@@ -162,7 +179,8 @@ elif int(ip_prefix) == 31:
         subnet_decimal_list[3] + 2 ** (32 - int(ip_prefix)) - 1
     ]
 
-# First/Last available host bin
+# Convert the first/last available host address to binary format
+
 first_bin_list = []
 for i in range(len(ip_list_octet)):
     first_bin_list.insert(i, ip_in_bin(int(first_av_host[i])))
@@ -173,7 +191,8 @@ for i in range(len(ip_list_octet)):
     last_bin_list.insert(i, ip_in_bin(int(last_av_host[i])))
     last_bin_list[i] = last_bin_list[i][0]
 
-# Available number of addresses
+# Calculate the total number of addresses and usable hosts
+
 available_number_prom = 32 - ip_prefix
 available_number = 2**available_number_prom
 
